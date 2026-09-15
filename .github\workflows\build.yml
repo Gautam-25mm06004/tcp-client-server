@@ -1,0 +1,13 @@
+name: Build C++17
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Compile
+        run: |
+          g++ -std=c++17 -Wall -Wextra -pedantic server.cpp -pthread -o server
+          g++ -std=c++17 -Wall -Wextra -pedantic client.cpp -o client
